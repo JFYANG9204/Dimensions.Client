@@ -1,0 +1,442 @@
+﻿<Page x:Class="Dimensions.Client.Views.SettingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      mc:Ignorable="d" 
+      d:DesignHeight="600"
+      d:DesignWidth="800"
+      Title="SettingPage">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="WhiteSmoke" Unloaded="Grid_Unloaded">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Label VerticalAlignment="Center"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Margin="20, 0, 0, 0"
+                       HorizontalAlignment="Left">设置</Label>
+                <Separator Margin="0,40,0,0" 
+                           Width="600"
+                           HorizontalAlignment="Left"/>
+            </Grid>
+            <!--SPEC AUTOMATION-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="550"/>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <TextBlock Text="SPEC SHEET读取模式"
+                                       FontSize="18"
+                                       FontWeight="DemiBold"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <Separator Margin="0,30,0,0"
+                                       Width="350"
+                                       HorizontalAlignment="Left"/>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <RadioButton GroupName="G3"
+                                             Margin="3"
+                                             Width="80"
+                                             Background="WhiteSmoke"
+                                             IsChecked="{Binding AutoAnalysisSpec}"
+                                             Content="自动">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding AutoAnalysisSpecCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </RadioButton>
+                                <RadioButton GroupName="G3"
+                                             Margin="3"
+                                             Width="80"
+                                             Background="WhiteSmoke"
+                                             IsChecked="{Binding FixedAnalysisSpec}"
+                                             Content="固定列名">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding FixedAnalysisSpecCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </RadioButton>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <TextBlock Text="HEADER SHEET读取模式"
+                                       FontSize="18"
+                                       FontWeight="DemiBold"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <Separator Margin="0,30,0,0"
+                                       Width="350"
+                                       HorizontalAlignment="Left"/>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <RadioButton GroupName="G4"
+                                             Margin="3"
+                                             Width="80"
+                                             Background="WhiteSmoke"
+                                             IsChecked="{Binding VerticalHeader}"
+                                             Content="纵向">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding VerticalHeaderCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </RadioButton>
+                                <RadioButton GroupName="G4"
+                                             Margin="3"
+                                             Width="80"
+                                             Background="WhiteSmoke"
+                                             IsChecked="{Binding HorizenHeader}"
+                                             Content="横向">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding HorizenHeaderCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </RadioButton>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <TextBlock Text="SPEC自动化关键字"
+                                       FontSize="18"
+                                       FontWeight="DemiBold"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <Separator Margin="0,30,0,0"
+                                       Width="350"
+                                       HorizontalAlignment="Left"/>
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Spec Sheet名关键字"
+                                       Grid.Column="1"
+                                       FontSize="12"
+                                       Margin="0,0,20,0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"/>
+                            <Button Style="{StaticResource MahApps.Styles.Button}"
+                                    Grid.Column="2"
+                                    Width="80"
+                                    Content="修改"
+                                    FontSize="10"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Command="{Binding EditSpecKeysCommand}"/>
+                        </Grid>
+                        <Grid Grid.Row="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Header Sheet名关键字"
+                                       Grid.Column="1"
+                                       FontSize="12"
+                                       Margin="0,0,20,0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"/>
+                            <Button Style="{StaticResource MahApps.Styles.Button}"
+                                    Grid.Column="2"
+                                    Width="80"
+                                    Content="修改"
+                                    FontSize="10"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Command="{Binding EditHeaderKeysCommand}"/>
+                        </Grid>
+                        <Grid Grid.Row="7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1"
+                                       Text="打分题高分标签关键字"
+                                       FontSize="12"
+                                       Margin="0,0,20,0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"/>
+                            <Button Grid.Column="2"
+                                    Style="{StaticResource MahApps.Styles.Button}"
+                                    Width="80"
+                                    Content="修改"
+                                    FontSize="10"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Command="{Binding EditHighFactorKeysCommand}"/>
+                        </Grid>
+                        <Grid Grid.Row="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1"
+                                       Text="Net关键字"
+                                       FontSize="12"
+                                       Margin="0,0,20,0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"/>
+                            <Button Grid.Column="2"
+                                    Style="{StaticResource MahApps.Styles.Button}"
+                                    Width="80"
+                                    Content="修改"
+                                    FontSize="10"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Command="{Binding EditNetKeysCommand}"/>
+                        </Grid>
+                        <Grid Grid.Row="9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1"
+                                       Text="Top/Bottom Box关键字"
+                                       FontSize="12"
+                                       Margin="0,0,20,0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"/>
+                            <Button Grid.Column="2"
+                                    Style="{StaticResource MahApps.Styles.Button}"
+                                    Width="80"
+                                    Content="修改"
+                                    FontSize="10"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Command="{Binding EditTopBottomKeysCommand}"/>
+                        </Grid>
+                        <Grid Grid.Row="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1"
+                                       Text="平均值关键字（Mean和平均提及）"
+                                       FontSize="12"
+                                       Margin="0,0,20,0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"/>
+                            <Button Grid.Column="2"
+                                    Style="{StaticResource MahApps.Styles.Button}"
+                                    Width="80"
+                                    Content="修改"
+                                    FontSize="10"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Command="{Binding EditAverageKeysCommand}"/>
+                        </Grid>
+                        <Grid Grid.Row="11">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1"
+                                       Text="固定列名关键字"
+                                       FontSize="12"
+                                       Margin="0,0,20,0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"/>
+                            <Button Grid.Column="2"
+                                    Style="{StaticResource MahApps.Styles.Button}"
+                                    Width="80"
+                                    Content="修改"
+                                    FontSize="10"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Command="{Binding EditFixedKeysCommand}"/>
+                        </Grid>
+                        <Grid Grid.Row="12">
+                            <TextBlock Text="SPEC输出设置"
+                                       FontSize="18"
+                                       FontWeight="DemiBold"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            <Separator Margin="0,30,0,0"
+                                       Width="350"
+                                       HorizontalAlignment="Left"/>
+                        </Grid>
+                        <Grid Grid.Row="13">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1"
+                                       Text="Spec Sheet第一行选择模式"
+                                       FontSize="12"
+                                       Margin="0,0,20,0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"/>
+                            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                <RadioButton GroupName="G1"
+                                             Margin="3"
+                                             Width="70"
+                                             Background="WhiteSmoke"
+                                             IsChecked="{Binding AutoRemoveHeaderRows}"
+                                             Content="自动">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding AutoRemoveHeaderRowsCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </RadioButton>
+                                <RadioButton GroupName="G1"
+                                             Margin="3"
+                                             Width="90"
+                                             Background="WhiteSmoke"
+                                             IsChecked="{Binding CustomRemoveHeaderRows}"
+                                             Content="指定行数">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding CustomRemoveHeaderRowsCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </RadioButton>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1"
+                                   Text="Spec Sheet标题行行号"
+                                   FontSize="12"
+                                   Margin="0,0,20,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"/>
+                            <TextBox x:Name="HeaderRowCountBox"
+                                     Grid.Column="2"
+                                     Margin="4 1"
+                                     Width="60"
+                                     Text="{Binding HeaderRowsCount}"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding HeaderRowCountTextChangedCommand}"
+                                                               CommandParameter="{Binding ElementName=HeaderRowCountBox}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--DMQuery-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="320"/>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="DM Query设置"
+                                   FontSize="18"
+                                   FontWeight="DemiBold"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"/>
+                        <Separator Margin="0,30,0,0"
+                                   Width="350"
+                                   HorizontalAlignment="Left"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1"
+                                   Text="输出数据类型"
+                                   FontSize="12"
+                                   Margin="0,0,20,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"/>
+                        <StackPanel Grid.Column="2" Orientation="Horizontal">
+                            <RadioButton GroupName="G2"
+                                             Margin="3"
+                                             Width="70"
+                                             Background="WhiteSmoke"
+                                             IsChecked="{Binding DmQueryShowLabel}"
+                                             Content="码号">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding DmQueryShowLabelCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </RadioButton>
+                            <RadioButton GroupName="G2"
+                                             Margin="3"
+                                             Width="90"
+                                             Background="WhiteSmoke"
+                                             IsChecked="{Binding DmQueryShowValue}"
+                                             Content="值">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding DmQueryShowValueCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </RadioButton>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

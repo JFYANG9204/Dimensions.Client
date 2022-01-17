@@ -1,0 +1,100 @@
+﻿<Page x:Class="Dimensions.Client.Views.DMQueryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DMQueryPage">
+   
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="34" MaxHeight="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              Background="WhiteSmoke">
+            <ToolBar Style="{StaticResource MahApps.Styles.ToolBar}" ToolBarTray.IsLocked="True">
+                <Separator/>
+                <StackPanel Orientation="Horizontal" Margin="4,0,4,0">
+                    <Button Command="{Binding OpenMddCommand}"
+                            Margin="4"
+                            Foreground="Black"
+                            Style="{StaticResource MahApps.Styles.Button.Calendar.Header}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        MDD
+                    </Button>
+                    <Label Content="{Binding MddStatus}"
+                           Foreground="{Binding MddStatusColor}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="4"/>
+                </StackPanel>
+                <Separator/>
+                <StackPanel Orientation="Horizontal" Margin="4,0,4,0">
+                    <Button Command="{Binding OpenDdfCommand}"
+                            Margin="4"
+                            Foreground="Black"
+                            Style="{StaticResource MahApps.Styles.Button.Calendar.Header}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        DDF
+                    </Button>
+                    <Label Content="{Binding DdfStatus}"
+                           Foreground="{Binding DdfStatusColor}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="4"/>
+                </StackPanel>
+                <Separator/>
+                <StackPanel Orientation="Horizontal" Margin="4,0,4,0">
+                    <Button Command="{Binding ShowSettingCommand}"
+                            Margin="4"
+                            Foreground="Black"
+                            Style="{StaticResource MahApps.Styles.Button.Calendar.Header}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        配置
+                    </Button>
+                </StackPanel>
+                <Separator/>
+                <StackPanel Orientation="Horizontal" Margin="4,0,4,0">
+                    <Button Command="{Binding ExportFileCommand}"
+                            Margin="4"
+                            Foreground="Black"
+                            Style="{StaticResource MahApps.Styles.Button.Calendar.Header}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        导出
+                    </Button>
+                </StackPanel>
+                <Separator/>
+            </ToolBar>
+        </Grid>
+        <Grid Grid.Row="1" Background="WhiteSmoke">
+            <DataGrid x:Name="QueryResult"
+                      GridLinesVisibility="All"
+                      AutoGenerateColumns="True"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserReorderColumns="False"
+                      CanUserResizeRows="False"
+                      CanUserSortColumns="False"
+                      SelectionUnit="Cell"
+                      AutoGeneratingColumn="AutoGenerateColumn"
+                      ItemsSource="{Binding ResultView}"
+                      Visibility="{Binding AfterLoadVisibility}"/>
+            <Label Content="{Binding ExportPercentage}"
+                   Visibility="{Binding ExportProgressVisibility}"
+                   FontSize="15"
+                   Background="White"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+            <mah:ProgressRing HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Visibility="{Binding LoadProgressVisibility}"/>
+        </Grid>
+    </Grid>
+</Page>

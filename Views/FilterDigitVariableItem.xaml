@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Dimensions.Client.Views.FilterDigitVariableItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Dimensions.Client.Views"
+             mc:Ignorable="d" 
+             Background="WhiteSmoke"
+             BorderBrush="LightGray"
+             BorderThickness="1"
+             d:DesignHeight="80"
+             d:DesignWidth="350"
+             MinWidth="380"
+             MaxHeight="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="70"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="VariableName" 
+               Grid.Column="0"
+               Margin="5"
+               VerticalAlignment="Center"/>
+        <ComboBox x:Name="InnerLogic"
+                  Grid.Column="1"
+                  SelectionChanged="InnerLogic_SelectionChanged"
+                  SelectedIndex="0"
+                  Height="20"
+                  Margin="8">
+            <ComboBoxItem x:Name="Greater" Content="大于"/>
+            <ComboBoxItem x:Name="GreaterOrEqual" Content="大于或等于"/>
+            <ComboBoxItem x:Name="Smaller" Content="小于"/>
+            <ComboBoxItem x:Name="SmallerOrEqual" Content="小于或等于"/>
+            <ComboBoxItem x:Name="Equal" Content="等于"/>
+        </ComboBox>
+        <TextBox x:Name="DigitValue"
+                 Grid.Column="2"
+                 TextChanged="DigitValue_TextChanged"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 MinWidth="50"
+                 MaxWidth="60"
+                 Margin="5"/>
+        <ComboBox x:Name="OutterLogic"
+                  Grid.Column="3"
+                  SelectedIndex="0"
+                  SelectionChanged="InnerLogic_SelectionChanged"
+                  Height="20"
+                  Margin="8">
+            <ComboBoxItem x:Name="OutterAnd" Content="且"/>
+            <ComboBoxItem x:Name="OutterOr"  Content="或"/>
+        </ComboBox>
+    </Grid>
+</UserControl>

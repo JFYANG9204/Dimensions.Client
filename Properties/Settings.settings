@@ -1,0 +1,69 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Dimensions.Client.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SpecSheetKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">spec,表侧</Value>
+    </Setting>
+    <Setting Name="HeaderSheetKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">header,topbreak,banner,表头</Value>
+    </Setting>
+    <Setting Name="HighFactorKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">increase,enhance,improve,raise,heighten,增加,提高,首选,非常相符,非常了解,唯一考虑,首先考虑,唯一,第一选择,第一</Value>
+    </Setting>
+    <Setting Name="NetKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">net,nets</Value>
+    </Setting>
+    <Setting Name="TopBottomKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">t2b,top2,t3b,top3,b2b,bottom2,b3b,bottom3,nps,topbox,tb</Value>
+    </Setting>
+    <Setting Name="AverageKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">average,平均提及,均值,mean</Value>
+    </Setting>
+    <Setting Name="AutoRemoveHeaderType" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="HeaderRowCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="AddSubGroup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="QueryShowValue" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="FixedLabelKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">名字,name</Value>
+    </Setting>
+    <Setting Name="FixedNameKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">题号,question</Value>
+    </Setting>
+    <Setting Name="FixedBaseKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">基数,base</Value>
+    </Setting>
+    <Setting Name="FixedTopBottomKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">top/bottom,top,bottom</Value>
+    </Setting>
+    <Setting Name="FixedMeanKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mean/std,mean,std</Value>
+    </Setting>
+    <Setting Name="FixedRemarkKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">note,remark</Value>
+    </Setting>
+    <Setting Name="FixedSummaryKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">summary</Value>
+    </Setting>
+    <Setting Name="FixedValueKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">value,赋值</Value>
+    </Setting>
+    <Setting Name="FixedAverageKeys" Type="System.String" Scope="User">
+      <Value Profile="(Default)">average,平均提及</Value>
+    </Setting>
+    <Setting Name="LoadWithFixedHeaderType" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HorizenHeader" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

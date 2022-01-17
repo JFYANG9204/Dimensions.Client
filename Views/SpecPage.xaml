@@ -1,0 +1,213 @@
+﻿<Page x:Class="Dimensions.Client.Views.SpecPage"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:cmd="http://www.galasoft.ch/mvvmlight" 
+      xmlns:viewmodels="clr-namespace:Dimensions.Client.ViewModels" 
+      d:DataContext="{d:DesignInstance Type=viewmodels:SpecContentViewModel}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" 
+      d:DesignWidth="800"
+      Title="SpecPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="45" MinHeight="34"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="WhiteSmoke">
+            <ToolBar Style="{StaticResource MahApps.Styles.ToolBar}" ToolBarTray.IsLocked="True">
+                <Separator/>
+                <StackPanel Orientation="Horizontal" Margin="4,0,4,0">
+                    <Button Command="{Binding OpenMddCommand}"
+                            Margin="4"
+                            Foreground="Black"
+                            Style="{StaticResource MahApps.Styles.Button.Calendar.Header}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        MDD
+                    </Button>
+                    <Label Content="{Binding MddStatus}"
+                           Foreground="{Binding MddStatusColor}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="4"/>
+                </StackPanel>
+                <Separator/>
+                <StackPanel Orientation="Horizontal" Margin="4,0,4,0">
+                    <Button Command="{Binding OpenSpecCommand}"
+                            Margin="4"
+                            Foreground="Black"
+                            Style="{StaticResource MahApps.Styles.Button.Calendar.Header}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        SPEC
+                    </Button>
+                    <Label Content="{Binding SpecStatus}"
+                           Foreground="{Binding SpecStatusColor}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="4"/>
+                </StackPanel>
+                <Separator/>
+                <StackPanel Orientation="Horizontal" Margin="4,0,4,0">
+                    <Button Command="{Binding LoadCommand}"
+                            Margin="4"
+                            Foreground="Black"
+                            Style="{StaticResource MahApps.Styles.Button.Calendar.Header}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        载入
+                    </Button>
+                </StackPanel>
+                <Separator/>
+                <StackPanel Orientation="Horizontal" Margin="4,0,4,0">
+                    <Button Command="{Binding RunCommand}"
+                            Margin="4"
+                            Foreground="Black"
+                            Style="{StaticResource MahApps.Styles.Button.Calendar.Header}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        执行
+                    </Button>
+                </StackPanel>
+                <Separator/>
+                <StackPanel Orientation="Horizontal" Margin="4,0,4,0">
+                    <Label VerticalAlignment="Center"
+                           HorizontalAlignment="Center">
+                        嵌套表头
+                    </Label>
+                    <ComboBox Height="20"
+                              Width="80"
+                              Margin="2"
+                              Foreground="Black"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Style="{StaticResource MahApps.Styles.Control.WindowCommands}"
+                              SelectedIndex="{Binding SubTtIndex}">
+                        <ComboBoxItem Content="不添加"/>
+                        <ComboBoxItem Content="添加"/>
+                    </ComboBox>
+                </StackPanel>
+                <Separator/>
+                <StackPanel Orientation="Horizontal" Margin="4,0,4,0">
+                    <Label VerticalAlignment="Center"
+                           HorizontalAlignment="Center">
+                        MDD语言
+                    </Label>
+                    <ComboBox Height="20"
+                              Width="80"
+                              Margin="2"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Style="{StaticResource MahApps.Styles.Control.WindowCommands}"
+                              ItemsSource="{Binding MddLngItems}"
+                              SelectedIndex="{Binding MddLngIndex}"/>
+                </StackPanel>
+            </ToolBar>
+        </Grid>
+        <Grid Grid.Row="1" Background="WhiteSmoke">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                  Visibility="{Binding AfterLoadVisibility}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button Command="{Binding LastSheetCommand}"
+                            Margin="4"
+                            Foreground="Black"
+                            Style="{StaticResource MahApps.Styles.Button.Calendar.Header}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                        上一个
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Label Margin="4"
+                           Content="{Binding CurrentSheetName}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button Command="{Binding NextSheetCommand}"
+                            Margin="4"
+                            Foreground="Black"
+                            Style="{StaticResource MahApps.Styles.Button.Calendar.Header}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+                        下一个
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Focusable="True">
+                <DataGrid x:Name="specData"
+                          HeadersVisibility="All"
+                          RowHeaderWidth="20"
+                          SelectionUnit="CellOrRowHeader"
+                          AutoGenerateColumns="True"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="True"
+                          CanUserReorderColumns="False"
+                          CanUserResizeRows="False"
+                          CanUserSortColumns="False"
+                          EnableColumnVirtualization="False"
+                          EnableRowVirtualization="False"
+                          FontSize="10"
+                          GridLinesVisibility="All"
+                          AutoGeneratingColumn="AutoGenerateColumn"
+                          ItemsSource="{Binding CurrentView}"
+                          Visibility="{Binding AfterLoadVisibility}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Loaded">
+                            <i:InvokeCommandAction Command="{Binding DataGridRightMouseDownCommand}"
+                                                   CommandParameter="{Binding ElementName=specData}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="CellEditEnding">
+                            <cmd:EventToCommand Command="{Binding DataGridCellEditEndingCommand}" 
+                                                PassEventArgsToCommand="True"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <DataGrid.ContextMenu>
+                        <ContextMenu ItemsSource="{Binding MenuItems}">
+                            <ContextMenu.Resources>
+                                <Style TargetType="MenuItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                </Style>
+                            </ContextMenu.Resources>
+                            <ContextMenu.ItemContainerStyle>
+                                <Style TargetType="MenuItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                </Style>
+                            </ContextMenu.ItemContainerStyle>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                </DataGrid>
+                <mah:ProgressRing VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"
+                                  Visibility="{Binding LoadVisibility}"/>
+                <Label VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="10"
+                       Content="{Binding LoadPercentage}"
+                       Visibility="{Binding LoadVisibility}"/>
+                <Label Margin="0, 100, 0, 10"
+                       HorizontalAlignment="Center"
+                       Height="30"
+                       FontSize="12"
+                       Content="{Binding LoadMessage}"
+                       Visibility="{Binding LoadVisibility}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
